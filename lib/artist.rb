@@ -27,6 +27,6 @@ class Artist
      self.all.find{|artist| artist.name=name}
    end
    def print_songs
-     self.songs
+       Song.artist
    end
 end
