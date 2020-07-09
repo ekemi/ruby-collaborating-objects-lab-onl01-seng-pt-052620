@@ -10,13 +10,15 @@ attr_accessor :artist, :name
     @@all
   end
 def self.new_by_filename(file)
-  parse = file.split(" - ")[0]
-  song = Song.new(parse)
-  song.artist
+  artist,song = file.split(" - ")
+  new_song = Song.new(song)
+  new_song.artist_name=artist
+  new_song
 end
 
 def artist_name=(name)
-artist = Artist.new
-Song.artist
+self.artist = Artist.find_or_create_by_name(name)
+artist.add_song(self)
+
 end
 end
